@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Checkout') {
-            steps { git 'https://github.com/durga123hello/maven.git' }
+            sed -i "s|git 'https://github.com/durga123hello/maven.git'|git branch: 'main', url: 'https://github.com/durga123hello/maven.git'|" Jenkinsfile
         }
         stage('Build') {
             steps { sh 'mvn clean package' }
